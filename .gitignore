@@ -1,0 +1,73 @@
+bin/
+obj/
+.vs/
+.vscode/
+node_modules/
+dist/
+coverage/
+.worktrees/
+*.user
+*.suo
+src/Api/appsettings.Development.json
+# Logs
+*.log
+*.err.log
+*.out.log
+
+# Specific logs
+api-*.log
+frontend-run*.log
+build*.log
+infra-*.log
+
+# App data (optional)
+src/Api/App_Data/Emails/
+
+# .NET build output
+**/bin/
+**/obj/
+artifacts/
+backend-build-out/
+.out-api/
+.out-api2/
+
+# Frontend generated files
+frontend/node_modules/
+frontend/dist/
+frontend/*.tsbuildinfo
+frontend/src/**/*.tsbuildinfo
+
+# Runtime and diagnostic output
+*.log
+*.err
+*.out
+clickup-diag.*
+api-run.*
+api-test.*
+frontend-run.*
+
+# Local diagnostic/query scripts
+.query-*.ps1
+.sync-*.ps1
+
+# Local authentication/test data
+login-member.json
+*.token
+*.secrets.json
+
+# Local email pickup
+src/Api/App_Data/Emails/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# IDE and OS files
+.vs/
+.idea/
+*.user
+*.suo
+.DS_Store
+Thumbs.db
+!.config/dotnet-tools.json

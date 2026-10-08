@@ -1,0 +1,6 @@
+<Project>
+  <PropertyGroup>
+    <MSBuildEnableWorkloadResolver>false</MSBuildEnableWorkloadResolver>
+    <NoWarn>$(NoWarn);NU1605;SYSLIB0011</NoWarn>
+  </PropertyGroup>
+</Project>

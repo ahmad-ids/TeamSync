@@ -1,0 +1,56 @@
+.task-form-member-availability {
+  height: 100%;
+  min-height: 100%;
+  padding: 22px 24px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  background: linear-gradient(180deg, rgba(250, 252, 255, 0.98), rgba(244, 248, 255, 0.94));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+}
+
+.task-form-member-availability__content {
+  width: 100%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+}
+
+.task-form-member-availability__label {
+  margin: 0;
+  color: #4f627f;
+  font-size: 12.5px !important;
+  font-weight: 700 !important;
+  line-height: 1.35;
+}
+
+.task-form-member-availability__value {
+  margin: 0;
+  color: #16335c;
+  font-size: 21px !important;
+  font-weight: 700 !important;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.task-form-member-availability__subtitle {
+  margin: 0;
+  color: #6b7d99;
+  font-size: 12.5px !important;
+  line-height: 1.5;
+  max-width: 220px;
+}
+
+@media (max-width: 899px) {
+  .task-form-member-availability {
+    padding: 20px 20px 18px;
+    border-radius: 18px;
+  }
+
+  .task-form-member-availability__subtitle {
+    max-width: none;
+  }
+}

@@ -1,0 +1,59 @@
+.authHeader {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 0;
+  padding: 20px 16px 12px;
+  position: relative;
+  z-index: 1;
+  overflow: visible;
+  background: transparent;
+  box-shadow: none;
+  border-bottom: 0;
+}
+
+.authHeader__title {
+  display: inline-block;
+  color: #24315a;
+  font-family: "Poppins", "Plus Jakarta Sans", sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.012em;
+}
+
+@media (min-width: 600px) {
+  .authHeader {
+    padding: 24px 20px 14px;
+  }
+
+  .authHeader__title {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 900px) {
+  .authHeader {
+    padding: 32px 28px 24px;
+  }
+
+  .authHeader__title {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .authHeader {
+    padding: 32px 36px 24px;
+  }
+}
+
+.authHeroChaos {
+  color: #1e5ce0;
+  font-style: italic;
+  letter-spacing: 0.03em;
+  font-family: "Poppins", "Plus Jakarta Sans", sans-serif;
+  text-shadow: 0 0 0.5px rgba(30, 92, 224, 0.12);
+}
