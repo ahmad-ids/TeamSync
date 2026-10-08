@@ -36,7 +36,7 @@ Solution file: `IDS.Project.sln`. The backend is split into four projects:
 
 - .NET 8 SDK. `global.json` pins **8.0.419** with `rollForward: latestFeature`.
 - Node.js and npm
-- SQL Server. The default connection string points at `.\SQLEXPRESS`, database `IdsProjectDb`, with Windows auth.
+- SQL Server, running locally. See [Database](#database) below.
 - `dotnet-ef` is a local tool (`.config/dotnet-tools.json`). Run `dotnet tool restore` to install it.
 
 ### 1. Backend secrets
@@ -83,9 +83,37 @@ npm install
 npm run dev
 ```
 
-On startup the API **applies EF migrations automatically**
-(`DatabaseInitialization:ApplyMigrationsOnStartup`). It then seeds a demo team,
-so there is no need to run `dotnet ef database update` by hand.
+### Database
+
+No database comes with the repository; each developer uses a local SQL Server.
+**There is no need to create the database by hand.** On every startup the API
+calls `MigrateAsync()` (`ApplicationDbContextSeed.cs`). That creates
+`IdsProjectDb` if it doesn't exist, applies all migrations, and seeds the demo
+team and accounts. Nothing reads the `DatabaseInitialization:ApplyMigrationsOnStartup`
+setting in `appsettings.json`; migrations always run.
+
+What you need:
+
+- A running SQL Server instance. SQL Server Express or Developer edition both work.
+- A Windows login that is allowed to create databases on it. The default connection string uses Windows auth (`Trusted_Connection=True`).
+
+The default connection string is
+`Server=.\SQLEXPRESS;Database=IdsProjectDb;Trusted_Connection=True;TrustServerCertificate=True;MultipleActiveResultSets=True`.
+If your instance has a different name, or uses LocalDB or SQL authentication,
+override the string in user secrets rather than editing `appsettings.json`:
+
+```bash
+cd src/Api
+# LocalDB example
+dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=(localdb)\\MSSQLLocalDB;Database=IdsProjectDb;Trusted_Connection=True;TrustServerCertificate=True;MultipleActiveResultSets=True"
+```
+
+`dotnet ef` commands ignore that override. They use the design-time factory
+`src/Infrastructure/Persistence/ApplicationDbContextFactory.cs`, which has
+`.\SQLEXPRESS` hard-coded. This only matters when adding migrations: run them
+against `.\SQLEXPRESS`, or change the string in the factory.
+
+To reset to a clean demo state, drop `IdsProjectDb` and restart the API.
 
 ### 3. Demo accounts (seeded)
 
